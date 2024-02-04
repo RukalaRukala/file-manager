@@ -13,11 +13,13 @@ export class TransformStream extends Transform {
         const data = chunk.toString();
 
         const [curCommand, args] = data.startsWith('npm run start -- --username=')
-            ? ['start', data.slice(data.indexOf('=') + 1)]
-            : [data.split(' ')[0], data.indexOf(' ')];
+            ? ['start', data.slice(data.indexOf('=') + 1).trim()]
+            : [data.split(' ')[0].trim(), data.slice(data.indexOf(' ')).trim()];
 
         try {
-            if (commands.has(curCommand)) {
+            if (curCommand === '.exit') {
+                process.exit();
+            } else if (commands.has(curCommand)) {
                 const result = color.green + commands.get(curCommand)(args) + currentFolder();
                 this.push(result);
             } else {

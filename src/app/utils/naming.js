@@ -15,3 +15,6 @@ export function setUsername(newUsername) {
 export function getUsername() {
     return username;
 }
+
+export const sayGoodbye = () => `\nThank you for using File Manager, ${getUsername()}, goodbye!\n\n`;
+export const sayHello = () => `\nWelcome to the File Manager, ${getUsername()}!\n`;
