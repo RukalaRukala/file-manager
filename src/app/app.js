@@ -1,4 +1,6 @@
-import { TransformStream } from './transformClass.js';
+import { TransformStream } from './utils/transformClass.js';
+import { getUsername } from "./utils/naming.js";
+import {failOperation} from "./utils/failOperation.js";
 
 export async function appRun() {
     const transformStream = new TransformStream();
@@ -7,14 +9,14 @@ export async function appRun() {
 
     return new Promise((resolve, reject) => {
         process.on('SIGINT', () => {
-            console.log('\nПроцесс прерван. Поток process.stdin закрыт.');
+            process.stdout.write(`\nThank you for using File Manager, ${getUsername()} 'goodbye!\n\n`);
             process.stdin.end();
             process.exit();
             resolve();
         });
 
-        process.stdin.on('error', (error) => {
-            reject(error);
+        process.stdin.on('error', () => {
+            failOperation();
         });
     });
 }
