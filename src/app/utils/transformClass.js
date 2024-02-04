@@ -17,9 +17,11 @@ export class TransformStream extends Transform {
             : [data.split(' ')[0].trim(), data.slice(data.indexOf(' ')).trim()];
 
         try {
-            if (curCommand === '.exit') {
+            if (data.trim() === '.exit') {
                 process.exit();
-            } else if (commands.has(curCommand)) {
+            }
+
+            if (commands.has(curCommand)) {
                 const result = color.green + commands.get(curCommand)(args) + currentFolder();
                 this.push(result);
             } else {
