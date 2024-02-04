@@ -9,7 +9,7 @@ export async function appRun() {
 
     return new Promise((resolve, reject) => {
         process.on('SIGINT', () => {
-            process.stdout.write(`\nThank you for using File Manager, ${getUsername()} 'goodbye!\n\n`);
+            process.stdout.write(`\nThank you for using File Manager, ${getUsername()}, goodbye!\n\n`);
             process.stdin.end();
             process.exit();
             resolve();

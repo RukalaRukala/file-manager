@@ -1,8 +1,6 @@
-import path from "path";
-import {fileURLToPath} from "url";
 import {color} from "./color.js";
 
-export const __dirname = () => path.dirname(fileURLToPath(import.meta.url));
+export const __dirname = () => process.cwd();
 export const getFile = (path) => path.join(__dirname, path);
 
 export const currentFolder = () =>
