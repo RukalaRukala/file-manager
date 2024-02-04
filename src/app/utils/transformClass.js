@@ -10,29 +10,32 @@ export class TransformStream extends Transform {
     }
 
     _transform(chunk, encoding, callback) {
-        const data = chunk.toString();
+        (async () => {
+            try {
+                const data = chunk.toString();
 
-        const [curCommand, args] = data.startsWith('npm run start -- --username=')
-            ? ['start', data.slice(data.indexOf('=') + 1).trim()]
-            : [data.split(' ')[0].trim(), data.slice(data.indexOf(' ')).trim()];
+                const [curCommand, args] = data.startsWith('npm run start -- --username=')
+                    ? ['start', data.slice(data.indexOf('=') + 1).trim()]
+                    : [data.split(' ')[0].trim(), data.slice(data.indexOf(' ')).trim()];
 
-        try {
-            if (data.trim() === '.exit') {
-                process.exit();
+                    if (data.trim() === '.exit') {
+                        process.exit();
+                    }
+
+                    if (commands.has(curCommand)) {
+                        const commandResult = await commands.get(curCommand)(args);
+                        const result = color.green + commandResult + currentFolder();
+                        this.push(result);
+                    } else {
+                        throw new Error('Invalid input');
+                    }
+            } catch (err) {
+                failOperation(err.message === 'Invalid input'
+                ? 'Invalid input'
+                : 'Operation failed');
             }
 
-            if (commands.has(curCommand)) {
-                const result = color.green + commands.get(curCommand)(args) + currentFolder();
-                this.push(result);
-            } else {
-                throw new Error('Invalid input');
-            }
-        } catch (err) {
-            failOperation(err.message === 'Invalid input'
-            ? 'Invalid input'
-            : 'Operation failed');
-        }
-
-        callback();
+            callback();
+        })()
     }
 }

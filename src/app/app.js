@@ -9,7 +9,6 @@ export async function appRun() {
 
     return new Promise((resolve, reject) => {
         process.on('SIGINT', () => {
-            // process.stdout.write(sayGoodbye());
             process.stdin.end();
             process.exit();
             resolve();
