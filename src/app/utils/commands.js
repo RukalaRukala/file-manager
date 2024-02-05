@@ -3,6 +3,7 @@ import {up} from "../commands/up.js";
 import {cd} from "../commands/cd.js";
 import {ls} from "../commands/ls.js";
 import {cat} from "../commands/cat.js";
+import {add} from "../commands/add.js";
 
 export const commands = new Map([
     ['start', start],
@@ -10,5 +11,6 @@ export const commands = new Map([
     ['cd', cd],
     ['ls', ls],
     ['cat', cat],
+    ['add', add],
 
 ])
