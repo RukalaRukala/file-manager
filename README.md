@@ -2,6 +2,17 @@
 
 <h2 style="color: yellow">Description:</h2>
 
+<pre>This project implements File manager using Node.js APIs.
+
+The file manager can do the following:
+
+- Work using CLI
+- Perform basic file operations (copy, move, delete, rename, etc.)
+- Utilize Streams API
+- Get information about the host machine operating system
+- Perform hash calculations
+- Compress and decompress files</pre>
+
 <h3 style="color: aqua">How to start application</h3>
 <p>Enter <span style="color: indianred">npm run start -- --username=your_username</span> without any additional symbols. Replace your_username with your real name.</p>
 <p>For example, npm run start -- --username=MIKALAI</p>>
