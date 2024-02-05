@@ -7,6 +7,9 @@
 <p>For example, npm run start -- --username=MIKALAI</p>>
 
 <h3 style="color: aqua">Commands:</h3>
+
+<h3 style="color: hsl(330, 100%, 90%)">Attention, paths and file(folder) names must be enclosed in quotes <span style="color: indianred">( " " )</span> in the following commands: <span style="color: indianred">rn, cp, mv, compress, decompress</span></h3>>
+
 <p><span style="color: indianred">up - </span> go upper from current directory (when you are in the root folder this operation shouldn't change working directory)</p>>
 <p><span style="color: indianred">cd path_to_directory - </span> Go to dedicated folder from current directory (path_to_directory can be relative or absolute)</p>>
 <p><span style="color: indianred">ls - </span> Print in console list of all files and folders in current directory.</p>>
