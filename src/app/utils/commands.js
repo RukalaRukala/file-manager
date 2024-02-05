@@ -7,6 +7,7 @@ import {add} from "../commands/add.js";
 import {rn} from "../commands/rn.js";
 import {cp} from "../commands/cp.js";
 import {mv} from "../commands/mv.js";
+import {rm} from "../commands/rm.js";
 
 export const commands = new Map([
     ['start', start],
@@ -18,4 +19,5 @@ export const commands = new Map([
     ['rn', rn],
     ['cp', cp],
     ['mv', mv],
+    ['rm', rm],
 ])
