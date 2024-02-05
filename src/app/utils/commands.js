@@ -9,6 +9,7 @@ import {cp} from "../commands/cp.js";
 import {mv} from "../commands/mv.js";
 import {rm} from "../commands/rm.js";
 import {hash} from "../commands/hash.js";
+import {compress} from "../commands/compress.js";
 
 export const commands = new Map([
     ['start', start],
@@ -22,4 +23,5 @@ export const commands = new Map([
     ['mv', mv],
     ['rm', rm],
     ['hash', hash],
+    ['compress', compress],
 ])
