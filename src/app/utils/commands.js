@@ -6,6 +6,7 @@ import {cat} from "../commands/cat.js";
 import {add} from "../commands/add.js";
 import {rn} from "../commands/rn.js";
 import {cp} from "../commands/cp.js";
+import {mv} from "../commands/mv.js";
 
 export const commands = new Map([
     ['start', start],
@@ -16,5 +17,5 @@ export const commands = new Map([
     ['add', add],
     ['rn', rn],
     ['cp', cp],
-
+    ['mv', mv],
 ])
