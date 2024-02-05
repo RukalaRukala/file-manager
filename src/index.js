@@ -7,7 +7,7 @@ import {failOperation} from "./app/utils/failOperation.js";
     try {
         setUsername(process.argv
             .slice(2)[0]
-            .slice(131));
+            .slice(11));
 
         process.stdout.write(sayHello());
         process.chdir(os.homedir());

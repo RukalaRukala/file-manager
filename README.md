@@ -22,7 +22,7 @@ The file manager can do the following:
 <h3 style="color: hsl(330, 100%, 90%)">Attention, paths and file(folder) names must be enclosed in quotes <span style="color: indianred">( " " )</span> in the following commands: <span style="color: indianred">rn, cp, mv, compress, decompress</span></h3>>
 
 <p><span style="color: indianred">up - </span> go upper from current directory (when you are in the root folder this operation shouldn't change working directory)</p>>
-<p><span style="color: indianred">cd path_to_directory - </span> Go to dedicated folder from current directory (path_to_directory can be relative or absolute)</p>>
+<p><span style="color: indianred">cd path_to_directory - </span> Go to dedicated folder from current directory (path_to_directory can be relative or absolute). If the path is not passed (like this <span style="color: indianred">cd</span>), the directory remains the same, no error is thrown</p>>
 <p><span style="color: indianred">ls - </span> Print in console list of all files and folders in current directory.</p>>
 <p><span style="color: indianred">cat path_to_file - </span> Read file and print it's content in console.</p>>
 <p><span style="color: indianred">add new_file_name - </span> Create empty file in current working directory.</p>>
