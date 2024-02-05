@@ -1,12 +1,5 @@
 import * as os from 'os';
-
-function cpusFunc() {
-    const CPUs = os.cpus()
-    for (let cpu of CPUs) {
-        delete cpu.times;
-    }
-    console.table(CPUs);
-}
+import {cpusFunc} from "../utils/cpusFunc.js";
 
 export function osFunc(arg) {
     switch (arg.trim()) {
@@ -21,6 +14,8 @@ export function osFunc(arg) {
         case '--cpus':
             cpusFunc();
             break;
+        default:
+            throw new Error('Invalid input');
     }
     return `\nDone!\n`
 }
