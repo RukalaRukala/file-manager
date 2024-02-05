@@ -4,17 +4,38 @@ import * as zlib from "zlib";
 import path from "path";
 
 export async function compress(args) {
-    const [initFilePath, pathToDestination] = createTwoVariables(args);
-    const initFileName = path.basename(initFilePath);
-    const readStream = fs.createReadStream(initFilePath);
-    const brotliStream = zlib.createBrotliCompress();
-    const writeStream = fs
-        .createWriteStream(`${pathToDestination}\\${initFileName}.br`);
+    try {
+        const [initFilePath, pathToDestination] = createTwoVariables(args);
+        const initFileName = path.basename(initFilePath);
+        const destinationFilePath = `${pathToDestination}\\${initFileName}.br`;
+        const readStream = fs.createReadStream(initFilePath);
+        const brotliStream = zlib.createBrotliCompress();
+        const writeStream = fs.createWriteStream(destinationFilePath);
 
-    await new Promise((resolve) => {
-        readStream.pipe(brotliStream).pipe(writeStream);
-        resolve();
-    });
+        return new Promise((resolve, reject) => {
+            readStream.on('error', (error) => {
+                writeStream.destroy();
+                reject(error);
+            });
 
-    return '\nDone!\n';
+            writeStream.on('error', (error) => {
+                reject(error);
+            });
+
+            brotliStream.on('error', (error) => {
+                writeStream.destroy();
+                reject(error);
+            });
+
+            writeStream.on('finish', () => {
+                resolve('\nDone!\n');
+            });
+
+
+            readStream.pipe(brotliStream).pipe(writeStream);
+        });
+
+    } catch (err) {
+        throw new Error('Operation failed');
+    }
 }
