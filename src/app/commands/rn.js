@@ -1,9 +1,8 @@
 import * as fs from "fs/promises";
+import {createTwoVariables} from "../utils/createTwoVariables.js";
 
 export async function rn(args) {
-    const [initFilePath, changedFilePath] = args
-        .replace(/^"|"$/g, '')
-        .split('" "');
+    const [initFilePath, changedFilePath] = createTwoVariables(args);
     await fs.rename(initFilePath, changedFilePath);
-    return '\nDone!\n'
+    return '\nDone!\n';
 }
