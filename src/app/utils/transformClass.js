@@ -13,10 +13,8 @@ export class TransformStream extends Transform {
         (async () => {
             try {
                 const data = chunk.toString();
-
-                const [curCommand, args] = data.startsWith('npm run start -- --username=')
-                    ? ['start', data.slice(data.indexOf('=') + 1).trim()]
-                    : [data.split(' ')[0].trim(), data.slice(data.indexOf(' ')).trim()];
+                const curCommand = data.split(' ')[0].trim();
+                const args = data.slice(data.indexOf(' ')).trim();
 
                     if (data.trim() === '.exit') {
                         process.exit();

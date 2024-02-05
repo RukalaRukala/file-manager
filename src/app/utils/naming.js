@@ -16,7 +16,7 @@ export function getUsername() {
 }
 
 export const sayGoodbye = () =>
-    `${color.green}\nThank you for using File Manager, ${getUsername() || 'Unknown User'}, goodbye!\n\n`;
+    `${color.green}\nThank you for using File Manager, ${getUsername() || 'Unknown User'}, goodbye!\n`;
 
 export const sayHello = () =>
-    `${color.green}Welcome to the File Manager, ${getUsername() || 'Unknown User'}!${color.reset}\n\n`;
+    `${color.green}Welcome to the File Manager, ${getUsername() || 'Unknown User'}!${color.reset}\n`;

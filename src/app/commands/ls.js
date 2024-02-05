@@ -15,6 +15,6 @@ export async function ls() {
             type: statFile.isFile() ? 'file' : 'directory'
         }
     }));
-    console.table(result);
+    console.table(result.sort((file1, file2) => file1.type.localeCompare(file2.type)));
     return 'Done!\n';
 }
