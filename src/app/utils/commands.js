@@ -11,6 +11,7 @@ import {rm} from "../commands/rm.js";
 import {hash} from "../commands/hash.js";
 import {compress} from "../commands/compress.js";
 import {decompress} from "../commands/decompress.js";
+import {osFunc} from "../commands/os.js";
 
 export const commands = new Map([
     ['start', start],
@@ -26,4 +27,5 @@ export const commands = new Map([
     ['hash', hash],
     ['compress', compress],
     ['decompress', decompress],
+    ['os', osFunc],
 ])
