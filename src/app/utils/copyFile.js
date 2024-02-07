@@ -10,8 +10,10 @@ export async function copyFile(str, status = 'copy') {
     const writeStream = fs.createWriteStream(`${destinationFolderPath}/${sourceFileName}`);
 
     await new Promise((resolve, reject) => {
-        readStream.on('end', resolve);
         readStream.on('error', reject);
+        writeStream.on('error', reject);
+        writeStream.on('end', resolve);
+        readStream.on('end', resolve);
         readStream.pipe(writeStream);
     });
     if (status === 'move') {

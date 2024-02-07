@@ -1,9 +1,11 @@
 import { createHash } from 'node:crypto';
 import fs from "fs";
+import path from "path";
+import {__dirname} from "../utils/naming.js";
 
 export async function hash(pathToFile) {
     const hash = createHash('sha256');
-    const stream = fs.createReadStream(pathToFile);
+    const stream = fs.createReadStream(path.resolve(__dirname(), pathToFile));
 
     return new Promise((resolve, reject) => {
         stream.on('data', (chunk) => {
